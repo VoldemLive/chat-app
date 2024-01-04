@@ -34,13 +34,12 @@ const SendMessage = () => {
         id: uid(),
       })
       setMessage("")
-      inputRef.current.focus()
     } catch (error) {
       inputRef.current.focus()
       console.error("Error on sending message:", error)
     } finally {
       setIsLoading(false)
-      inputRef.current.focus()
+      setTimeout(() => inputRef.current.focus(), 0)
     }
   }
   return (
@@ -55,7 +54,6 @@ const SendMessage = () => {
         className={styles.input}
         placeholder="Type your message here..."
         disabled={isLoading}
-        onBlur={() => inputRef.current.focus()}
       ></input>
       <button
         disabled={isLoading || !message}

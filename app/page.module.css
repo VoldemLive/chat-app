@@ -5,39 +5,36 @@
   align-items: center;
   background-color: var(--color-background);
   padding: 0 20px;
+  justify-content: center; /* Центрирование по вертикали */
 }
 
 .chatHolder {
   max-width: var(--max-width);
-  height: 640px;
-  padding: 20px;
-  gap: 20px;
-  padding: auto;
   display: flex;
   flex-direction: column;
   width: 100%;
+  gap: 20px;
+  flex-grow: 1; /* Занимает доступное пространство */
 }
 
 .chat {
-  width: 100%;
+  flex-grow: 1; /* Динамическая высота */
   padding: 20px;
   gap: 10px;
-  height: 100%;
   border: 1px solid var(--border-line-color);
   border-radius: var(--border-radius);
   background-color: var(--background-chat);
-  flex-wrap: wrap;
   display: flex;
-  overflow-x: hidden;
-  overflow-y: scroll;
-  align-content: flex-start;
+  flex-direction: column;
+  overflow-y: auto; /* Скролл только по вертикали */
   box-shadow: rgba(182, 51, 215, 0.2) 0px 1px 70px 0px;
+  max-height: calc(100vh - 250px);
 }
 
 .title {
   font-size: 2rem;
   color: white;
-  margin-top: 2rem;
+  margin: 1.5rem 0;
 }
 
 .messageHolder {
