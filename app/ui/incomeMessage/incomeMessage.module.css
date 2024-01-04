@@ -1,0 +1,44 @@
+.container {
+  min-width: 65%;
+  max-width: 85%;
+  height: fit-content;
+  color: antiquewhite;
+  overflow: hidden;
+  background-color: aquamarine;
+  display: flex;
+  background-color: var(--message-background);
+  border-radius: var(--border-radius-message);
+  border-bottom-left-radius: 0px;
+  flex-direction: row;
+  padding: 10px;
+  gap: 10px;
+}
+
+.avatarHoler {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+
+.authorName {
+  text-align: center;
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: var(--color-text-secondary);
+}
+
+.avatar {
+  display: flex;
+  border-radius: 50%;
+  min-width: 50px;
+  min-height: 50px;
+  aspect-ratio: 1;
+}
+
+.messageText {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 10px;
+  font-weight: 300;
+}

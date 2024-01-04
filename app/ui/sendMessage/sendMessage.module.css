@@ -1,0 +1,48 @@
+.container {
+  display: flex;
+  flex-direction: row;
+  gap: 10px;
+  max-width: 100%;
+  padding: 20px;
+}
+
+.container .input {
+  border-radius: var(--border-radius);
+  border: 5px solid var(--message-border-color);
+  padding: 20px;
+  font-size: 16px;
+  outline: none;
+  transition: all 0.3s ease;
+  width: 100%;
+}
+
+.container .button {
+  background-color: transparent;
+  border: 1px solid var(--message-border-color);
+  aspect-ratio: 1;
+  border: none;
+  color: white;
+  cursor: pointer;
+}
+
+.rotate {
+  width: 40px;
+  height: 40px;
+  animation: rotate-center 0.9s ease-in-out infinite both;
+}
+
+@keyframes rotate-center {
+  0% {
+    -webkit-transform: rotate(0);
+    transform: rotate(0);
+  }
+  100% {
+    -webkit-transform: rotate(360deg);
+    transform: rotate(360deg);
+  }
+}
+
+.buttonLogo {
+  width: 40px;
+  height: 40px;
+}
