@@ -7,16 +7,23 @@ const OutcomeMessage = ({ item }) => {
   const [audioPlaying, setAudioPlaying] = useState(false)
   const [audioLoading, setAudioLoading] = useState(false)
   const { text, author, time } = item
-  var audio = new Audio()
+  const [audio, setAudio] = useState(null)
 
-  const stopAudio = () => {
-    audio.pause()
-    setAudioPlaying(false)
-  }
+  useEffect(() => {
+    return () => {
+      if (audio) {
+        audio.pause()
+        audio.removeEventListener("play", onPlay)
+        audio.removeEventListener("ended", onEnded)
+      }
+    }
+  }, [audio])
+
+  const onPlay = () => setAudioPlaying(true)
+  const onEnded = () => setAudioPlaying(false)
 
   const handleGenerateAudio = async () => {
     setAudioLoading(true)
-    console.log(text)
     const response = await fetch("/api/generateAudio", {
       method: "POST",
       headers: {
@@ -28,22 +35,26 @@ const OutcomeMessage = ({ item }) => {
     if (response.ok) {
       const audioBlob = await response.blob()
       const audioUrl = URL.createObjectURL(audioBlob)
-      audio = new Audio(audioUrl)
+      const newAudio = new Audio(audioUrl)
 
-      audio.addEventListener("play", () => setAudioPlaying(true))
-      audio.addEventListener("ended", () => setAudioPlaying(false))
+      newAudio.addEventListener("play", onPlay)
+      newAudio.addEventListener("ended", onEnded)
 
-      audio
+      setAudio(newAudio)
+      newAudio
         .play()
-        .catch((error) => console.error("Ошибка воспроизведения:", error))
+        .catch((error) => console.error("Error playing of audiofile:", error))
       setAudioLoading(false)
-      return () => {
-        audio.removeEventListener("play", () => setAudioPlaying(true))
-        audio.removeEventListener("ended", () => setAudioPlaying(false))
-      }
     } else {
       setAudioLoading(false)
-      console.error("Ошибка при получении аудио")
+      console.error("Can't recieve audio")
+    }
+  }
+
+  const stopAudio = () => {
+    if (audio) {
+      audio.pause()
+      setAudioPlaying(false)
     }
   }
   return (
