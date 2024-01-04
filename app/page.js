@@ -21,9 +21,13 @@ export default function Home() {
     }
   }, [messages])
 
+  useEffect(() => {
+    if (isClient) scrollToBottom()
+  }, [isClient])
+
   const scrollToBottom = () => {
     divRef.current?.scroll({
-      top: divRef.current?.scrollHeight,
+      top: divRef.current.scrollHeight,
       behavior: "smooth",
     })
   }
@@ -33,7 +37,7 @@ export default function Home() {
       <div className={styles.container}>
         <RiLoader4Line className={styles.rotate} />
       </div>
-    ) // или какой-то другой заполнитель
+    )
   }
 
   return (

@@ -41,9 +41,10 @@ const IncomeMessage = ({ item }) => {
       newAudio.addEventListener("ended", onEnded)
 
       setAudio(newAudio)
-      newAudio
-        .play()
-        .catch((error) => console.error("Error playing of audiofile:", error))
+      newAudio.play().catch((error) => {
+        console.error("Error playing audiofile:", error)
+        alert("Please tap the play button to start audio")
+      })
       setAudioLoading(false)
     } else {
       setAudioLoading(false)
