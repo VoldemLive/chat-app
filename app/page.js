@@ -5,13 +5,16 @@ import IncomeMessage from "./ui/incomeMessage/incomeMessage"
 import SendMessage from "./ui/sendMessage/sendMessage"
 import useStore from "./library/store"
 import OutcomeMessage from "./ui/outcomeMessage/outcomeMessage"
-import { useRef, useEffect } from "react"
+import { useRef, useEffect, useState } from "react"
+import { RiLoader4Line } from "react-icons/ri"
 
 export default function Home() {
   const divRef = useRef(null)
   const messages = useStore((state) => state.messages)
+  const [isClient, setIsClient] = useState(false)
 
   useEffect(() => {
+    setIsClient(true)
     if (typeof window !== "undefined") {
       localStorage.setItem("messages", JSON.stringify(messages))
       scrollToBottom()
@@ -19,10 +22,18 @@ export default function Home() {
   }, [messages])
 
   const scrollToBottom = () => {
-    divRef.current.scroll({
-      top: divRef.current.scrollHeight,
+    divRef.current?.scroll({
+      top: divRef.current?.scrollHeight,
       behavior: "smooth",
     })
+  }
+
+  if (!isClient) {
+    return (
+      <div className={styles.container}>
+        <RiLoader4Line className={styles.rotate} />
+      </div>
+    ) // или какой-то другой заполнитель
   }
 
   return (

@@ -42,3 +42,21 @@
   flex-direction: column;
   width: 100%;
 }
+
+.rotate {
+  width: 750px;
+  height: 75px;
+  color: white;
+  animation: rotate-center 0.9s ease-in-out infinite both;
+}
+
+@keyframes rotate-center {
+  0% {
+    -webkit-transform: rotate(0);
+    transform: rotate(0);
+  }
+  100% {
+    -webkit-transform: rotate(360deg);
+    transform: rotate(360deg);
+  }
+}
