@@ -12,6 +12,7 @@ export default function Home() {
   const messages = useStore((state) => state.messages)
 
   useEffect(() => {
+    localStorage.setItem("messages", JSON.stringify(messages))
     scrollToBottom()
   }, [messages])
 

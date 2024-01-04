@@ -18,15 +18,20 @@ const SendMessage = () => {
   const handleSubmit = async (event) => {
     event.preventDefault()
     setIsLoading(true)
+    const newOutgoingMessage = {
+      author: "You",
+      time: new Date().toLocaleTimeString(),
+      text: message,
+      incoming: false,
+      id: uid(),
+    }
     try {
-      addMessage({
-        author: "You",
-        time: new Date().toLocaleTimeString(),
-        text: message,
-        incoming: false,
-        id: uid(),
-      })
-      const newMessage = await sendConversation(messagesAdapter(messages))
+      addMessage(newOutgoingMessage)
+      const correctConversation = messagesAdapter([
+        ...messages,
+        newOutgoingMessage,
+      ])
+      const newMessage = await sendConversation(correctConversation)
 
       addMessage({
         author: "AI",

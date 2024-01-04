@@ -13,6 +13,7 @@ export async function messageToAI(message) {
 }
 
 export async function sendConversationToAI(messages) {
+  console.log(messages)
   const chatCompletion = await openai.chat.completions.create({
     messages: messages,
     model: "gpt-3.5-turbo",
