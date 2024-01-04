@@ -3,15 +3,17 @@
 import { useState, useRef } from "react"
 import styles from "./sendMessage.module.css"
 import { RiSendPlaneFill, RiLoader4Line } from "react-icons/ri"
-import { sendMessage } from "@/app/library/actions"
+import { sendConversation } from "@/app/library/actions"
 import useStore from "@/app/library/store"
 import { uid } from "uid"
+import { messagesAdapter } from "@/app/library/messagesAdapter"
 
 const SendMessage = () => {
   const [message, setMessage] = useState("")
   const inputRef = useRef(null)
   const [isLoading, setIsLoading] = useState(false)
   const addMessage = useStore((state) => state.addMessage)
+  const messages = useStore((state) => state.messages)
 
   const handleSubmit = async (event) => {
     event.preventDefault()
@@ -24,7 +26,7 @@ const SendMessage = () => {
         incoming: false,
         id: uid(),
       })
-      const newMessage = await sendMessage(message)
+      const newMessage = await sendConversation(messagesAdapter(messages))
 
       addMessage({
         author: "AI",
