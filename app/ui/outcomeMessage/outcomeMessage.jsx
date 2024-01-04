@@ -1,7 +1,7 @@
 import styles from "./outcomeMessage.module.css"
 import Image from "next/image"
 import { RiVolumeUpLine, RiVolumeMuteLine, RiLoader4Line } from "react-icons/ri"
-import { useState } from "react"
+import { useState, useEffect } from "react"
 
 const OutcomeMessage = ({ item }) => {
   const [audioPlaying, setAudioPlaying] = useState(false)
