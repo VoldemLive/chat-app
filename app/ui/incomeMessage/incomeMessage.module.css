@@ -4,7 +4,6 @@
   height: fit-content;
   color: antiquewhite;
   overflow: hidden;
-  background-color: aquamarine;
   display: flex;
   background-color: var(--message-background);
   border-radius: var(--border-radius-message);
@@ -41,4 +40,34 @@
   justify-content: center;
   gap: 10px;
   font-weight: 300;
+}
+
+.speakIcon {
+  width: 25px;
+  height: 25px;
+  color: var(--color-text-secondary);
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.speakIcon:hover {
+  color: white;
+  transition: 0.3s;
+}
+
+.rotate {
+  width: 25px;
+  height: 25px;
+  animation: rotate-center 0.9s ease-in-out infinite both;
+}
+
+@keyframes rotate-center {
+  0% {
+    -webkit-transform: rotate(0);
+    transform: rotate(0);
+  }
+  100% {
+    -webkit-transform: rotate(360deg);
+    transform: rotate(360deg);
+  }
 }

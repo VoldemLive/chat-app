@@ -46,3 +46,40 @@
   text-align: left;
   padding-left: 20px;
 }
+
+.audioHolder {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+}
+
+.speakIcon {
+  width: 25px;
+  height: 25px;
+  color: var(--color-text-secondary);
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.speakIcon:hover {
+  color: white;
+  transition: 0.3s;
+}
+
+.rotate {
+  width: 25px;
+  height: 25px;
+  animation: rotate-center 0.9s ease-in-out infinite both;
+}
+
+@keyframes rotate-center {
+  0% {
+    -webkit-transform: rotate(0);
+    transform: rotate(0);
+  }
+  100% {
+    -webkit-transform: rotate(360deg);
+    transform: rotate(360deg);
+  }
+}

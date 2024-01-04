@@ -1,6 +1,10 @@
 "use server"
 
-import { messageToAI, sendConversationToAI } from "./apiOpenAI"
+import {
+  messageToAI,
+  sendConversationToAI,
+  getAudioFromText,
+} from "./apiOpenAI"
 
 export const sendMessage = async (message) => {
   const answer = await messageToAI(message)
