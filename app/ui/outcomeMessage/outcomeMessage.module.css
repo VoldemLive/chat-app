@@ -1,10 +1,10 @@
 .container {
+  display: flex;
+  color: antiquewhite;
+  height: fit-content;
+  place-self: flex-end;
   min-width: 35%;
   max-width: 85%;
-  height: fit-content;
-  color: antiquewhite;
-  overflow: hidden;
-  display: flex;
   background-color: var(--message-background);
   border-radius: var(--border-radius-message);
   border-bottom-right-radius: 0px;
@@ -12,7 +12,6 @@
   padding: 10px;
   gap: 10px;
   flex-direction: row-reverse;
-  align-items: center;
 }
 
 .avatarHoler {
@@ -44,4 +43,6 @@
   justify-content: center;
   gap: 10px;
   font-weight: 300;
+  text-align: left;
+  padding-left: 20px;
 }

@@ -7,6 +7,7 @@ const useStore = create((set) => ({
       time: "12:15",
       text: "Ask something what you want...",
       incoming: true,
+      id: 1,
     },
   ],
   addMessage: (message) =>

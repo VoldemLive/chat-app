@@ -27,15 +27,21 @@
   border-radius: var(--border-radius);
   background-color: var(--background-chat);
   flex-wrap: wrap;
-  flex-direction: column;
   display: flex;
   overflow-x: hidden;
   overflow-y: scroll;
-  align-items: baseline;
+  align-content: flex-start;
+  box-shadow: rgba(182, 51, 215, 0.2) 0px 1px 70px 0px;
 }
 
 .title {
   font-size: 2rem;
   color: white;
   margin-top: 2rem;
+}
+
+.messageHolder {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
 }

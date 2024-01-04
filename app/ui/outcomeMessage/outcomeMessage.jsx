@@ -8,7 +8,7 @@ const OutcomeMessage = ({ item }) => {
       <div className={styles.avatarHoler}>
         <Image
           className={styles.avatar}
-          src="https://images.pexels.com/photos/2071881/pexels-photo-2071881.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
+          src="/human.jpeg"
           alt=""
           width={60}
           height={60}
